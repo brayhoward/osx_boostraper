@@ -86,6 +86,7 @@ CASKS=(
   alfred
   spotify
   visual-studio-code
+  postman
 )
 brew cask install ${CASKS[@]}
 
@@ -106,12 +107,12 @@ NPM_PACKAGES=(
 )
 npm install ${NPM_PACKAGES} -g
 
-
-echo "Configuring OSX..."
-# https://github.com/lra/mackup
-mackup restore
-
 echo "Creating folder structure..."
 [[ ! -d $HOME/code ]] && mkdir code
 
 echo "Bootstrapping complete"
+echo ""
+echo "Login to your Dropbox account and sync your files"
+
+echo "Then run 👇"
+echo "mackup restore"
