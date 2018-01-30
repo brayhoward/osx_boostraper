@@ -60,6 +60,7 @@ export NVM_DIR="$HOME/.nvm"
 
 nvm install node
 
+echo "Installing Brew packages..."
 PACKAGES=(
   mackup
   coreutils
@@ -70,9 +71,8 @@ PACKAGES=(
   postgresql
   wget
   youtube-dl
+  heroku/brew/heroku
 )
-
-echo "Installing packages..."
 brew install ${PACKAGES[@]}
 
 echo "Cleaning up..."
