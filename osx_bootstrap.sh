@@ -94,6 +94,7 @@ CASKS=(
   spotify
   visual-studio-code
   postman
+  virtualbox
 )
 brew cask install ${CASKS[@]}
 
