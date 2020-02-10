@@ -34,7 +34,9 @@ then
   exit 1
 fi
 
-echo "Starting bootstrapping"
+echo "Start bootstrapping"
+
+cd $HOME
 
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
@@ -62,16 +64,72 @@ nvm install node
 
 echo "Installing Brew packages..."
 PACKAGES=(
-  mackup
+  adns
+  autoconf
+  bash
+  bash-completion
   coreutils
+  dfu-util
   elixir
   erlang
+  freetype
+  gdbm
+  gettext
   git
-  nvm
-  postgresql
-  wget
-  youtube-dl
+  git-lfs
+  gmp
+  gnupg
+  gnutls
+  heroku
+  heroku-node
   heroku/brew/heroku
+  icu4c
+  imagemagick
+  jpeg
+  jpegoptim
+  libassuan
+  libffi
+  libgcrypt
+  libgpg-error
+  libidn2
+  libksba
+  libpng
+  libtasn1
+  libtiff
+  libtool
+  libunistring
+  libusb
+  little-cms2
+  mackup
+  nettle
+  nginx
+  node
+  npth
+  nvm
+  openjpeg
+  openssl
+  optipng
+  p11-kit
+  pcre
+  pcre2
+  pinentry
+  pkg-config
+  postgresql
+  python
+  rbenv
+  readline
+  redis
+  rename
+  ruby-build
+  sqlite
+  tig
+  watchman
+  webp
+  wget
+  wxmac
+  xz
+  yarn
+  youtube-dl
 )
 brew install ${PACKAGES[@]}
 
@@ -80,21 +138,28 @@ brew cleanup
 
 # OSX APPS
 echo "Installing cask apps..."
-# Fix this so an error doesn't make other installs fail.
+
+###############################################################
+# TODO: Fix this so an error doesn't make other installs fail !
+###############################################################
 # Loop over each and issue the command
 CASKS=(
+  1Password
+  alfred
+  chromedriver
   dropbox
   firefox
+  foreman
   google-chrome
-  skype
-  slack
-  sketch
-  sizeup
-  alfred
-  spotify
-  visual-studio-code
+  iterm2
   postman
-  virtualbox
+  react-native-debugger
+  sizeup
+  sketch
+  slack
+  spotify
+  # virtualbox
+  visual-studio-code
 )
 brew cask install ${CASKS[@]}
 
@@ -104,12 +169,15 @@ NPM_PACKAGES=(
   audible-converter
   http-server
   typescript
-  angular-cli
+  t2-cli
 )
 npm install ${NPM_PACKAGES} -g
 
 echo "Creating folder structure..."
-[[ ! -d $HOME/code ]] && mkdir code
+[[ ! -d $HOME/code ]] && mkdir $HOME/code
+[[ ! -d $HOME/projects ]] && mkdir $HOME/projects
+[[ ! -d $HOME/projects/cohubinc ]] && mkdir $HOME/projects/cohubinc
+
 
 echo "Bootstrapping complete"
 echo ""
@@ -117,3 +185,4 @@ echo "Login to your Dropbox account and sync your files"
 
 echo "Then run 👇"
 echo "mackup restore"
+
