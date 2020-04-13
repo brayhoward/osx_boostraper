@@ -64,72 +64,28 @@ nvm install node
 
 echo "Installing Brew packages..."
 PACKAGES=(
-  adns
-  autoconf
   bash
-  bash-completion
   coreutils
-  dfu-util
   elixir
   erlang
-  freetype
-  gdbm
-  gettext
   git
   git-lfs
-  gmp
-  gnupg
-  gnutls
   heroku
-  heroku-node
-  heroku/brew/heroku
-  icu4c
   imagemagick
-  jpeg
-  jpegoptim
-  libassuan
-  libffi
-  libgcrypt
-  libgpg-error
-  libidn2
-  libksba
-  libpng
-  libtasn1
-  libtiff
-  libtool
-  libunistring
-  libusb
-  little-cms2
   mackup
-  nettle
   nginx
   node
-  npth
   nvm
   openjpeg
   openssl
-  optipng
-  p11-kit
-  pcre
-  pcre2
-  pinentry
-  pkg-config
   postgresql
-  python
   rbenv
-  readline
   redis
   rename
   ruby-build
-  sqlite
-  tig
   watchman
-  webp
   wget
-  wxmac
-  xz
   yarn
-  youtube-dl
 )
 brew install ${PACKAGES[@]}
 
