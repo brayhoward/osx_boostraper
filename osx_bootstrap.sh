@@ -70,12 +70,10 @@ PACKAGES=(
   erlang
   git
   git-lfs
-  heroku
+  heroku/brew/heroku
   imagemagick
   mackup
   nginx
-  node
-  nvm
   openjpeg
   openssl
   postgresql
@@ -86,8 +84,7 @@ PACKAGES=(
   watchman
   wget
   yarn
-)
-brew install ${PACKAGES[@]}
+)brew install ${PACKAGES[@]}
 
 echo "Cleaning up..."
 brew cleanup
