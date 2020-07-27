@@ -34,14 +34,16 @@ then
   exit 1
 fi
 
-echo "Start bootstrapping"
+echo "Install XCode command line tools"
+
+xcode-select --install
 
 cd $HOME
 
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Update homebrew recipes
@@ -53,12 +55,12 @@ brew install coreutils
 # Install Bash 4
 brew install bash
 
-# Install NVM
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+# # Install NVM
+# curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 nvm install node
 
@@ -77,14 +79,13 @@ PACKAGES=(
   openjpeg
   openssl
   postgresql
-  rbenv
   redis
   rename
-  ruby-build
   watchman
   wget
   yarn
-)brew install ${PACKAGES[@]}
+)
+brew install ${PACKAGES[@]}
 
 echo "Cleaning up..."
 brew cleanup
@@ -95,36 +96,31 @@ echo "Installing cask apps..."
 ###############################################################
 # TODO: Fix this so an error doesn't make other installs fail !
 ###############################################################
-# Loop over each and issue the command
-CASKS=(
-  1Password
-  alfred
-  chromedriver
-  dropbox
-  firefox
-  foreman
-  google-chrome
-  iterm2
-  postman
-  react-native-debugger
-  sizeup
-  sketch
-  slack
-  spotify
-  # virtualbox
-  visual-studio-code
-)
-brew cask install ${CASKS[@]}
+# CASKS=(
+#   1Password
+#   alfred
+#   chromedriver
+#   dropbox
+#   firefox
+#   google-chrome
+#   iterm2
+#   react-native-debugger
+#   sizeup
+#   slack
+#   spotify
+#   visual-studio-code
+# )
+# brew cask install ${CASKS[@]}
 
 # NPM
-echo "Installing global npm packages..."
-NPM_PACKAGES=(
-  audible-converter
-  http-server
-  typescript
-  t2-cli
-)
-npm install ${NPM_PACKAGES} -g
+#echo "Installing global npm packages..."
+#NPM_PACKAGES=(
+#  audible-converter
+#  http-server
+#  typescript
+#  t2-cli
+#)
+#npm install ${NPM_PACKAGES} -g
 
 echo "Creating folder structure..."
 [[ ! -d $HOME/code ]] && mkdir $HOME/code
